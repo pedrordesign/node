@@ -1,0 +1,18 @@
+{
+  "name": "contatooh",
+  "version": "0.0.0",
+  "authors": [
+    "Pedro Ramos <pedro@pedrordesign.com.br>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3"
+  }
+}

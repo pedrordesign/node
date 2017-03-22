@@ -1,0 +1,65 @@
+install NODE{
+
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+    sudo apt-get install -y nodejs
+
+    sudo apt-get install -y build-essential
+
+}
+
+
+
+dpgk problem?
+{
+    sudo rm /var/lib/apt/lists/lock
+    You may also need to delete the lock file in the cache directory
+
+    sudo rm /var/cache/apt/archives/lock
+    sudo rm /var/lib/dpkg/lock
+}
+
+
+package.json
+    para installar tudo
+        npm install
+
+(--save para adicionar em dependencies do package.json)
+
+
+
+// BIBLIOTECAS BACK END
+
+- install express
+npm install express@4.8 --save
+
+- install ejs embed dedjs
+npm install ejs@0.8 --save
+
+- install nodemon server como root para nao precisar reiniciar o server sempre
+sudo npm install nodemon -g
+
+- install module express load
+npm install express-load@1.1 --save
+
+- innstall method-override to get method verbs GET POST PUT DELETE
+npm install body-parser@1.6 method-override@2.1 --save
+
+
+
+//BIBLIOTECAS FRONT-END
+
+- install bower
+sudo npm install bower@1.3 -g
+
+-g globally (requires sudo)
+
+- install angular
+bower install angular#1.3 --save
+
+
+- alter bower_components  path
+create in root -> .bowerrc
+
+bower-> bower search angular
+        bower info angular
