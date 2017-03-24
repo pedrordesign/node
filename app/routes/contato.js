@@ -3,6 +3,10 @@
 
 module.exports = function(app){
     var controller = app.controllers.contato;
-    app.get('/contatos', controller.list);
-    app.get('/contatos/:id', controller.get);
+    app.route('/contatos')
+        .get(controller.list);
+    
+    app.route('/contatos/:id')
+        .get(controller.get)
+        .delete(controller.remove);
 }
