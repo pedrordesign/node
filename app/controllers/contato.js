@@ -1,40 +1,67 @@
-// app/controllers/contato.js
+// app/controllers/contact.js
 
-var contatos = [
-    { _id: 1, name: 'Contato 1', email: 'contato1@exemplo.com.br'},
-    { _id: 2, name: 'Contato 2', email: 'contato2@exemplo.com.br'},
-    { _id: 3, name: 'Contato 3', email: 'contato3@exemplo.com.br'},
-    { _id: 4, name: 'Contato 4', email: 'contato4@exemplo.com.br'}
+var contacts = [
+    { _id: 1, name: 'contact 1', email: 'contact1@exemplo.com.br'},
+    { _id: 2, name: 'contact 2', email: 'contact2@exemplo.com.br'},
+    { _id: 3, name: 'contact 3', email: 'contact3@exemplo.com.br'},
+    { _id: 4, name: 'contact 4', email: 'contact4@exemplo.com.br'}
 ];
 
 module.exports = function(){
     var controller = {};
+    var ID_CCONTACT_INC = 5;
 
     controller.list = function(req, res){
         
-        res.json(contatos);
+        res.json(contacts);
 
-        // retorna a pagina contatos.ejs
+        // retorna a pagina contacts.ejs
          //res.render('index', {
          //    name: 'Express'
          //})
     };
+
+    controller.save = function(req, res){
+        
+        var contact = req.body;
+        contact = contact._id ?
+        update(contact) :
+        create(contact);
+        res.json(contact);
+
+    };
+
+    function create(newContact){
+        newContact._id = ++ID_CCONTACT_INC;
+        contacts.push(newContact);
+        return newContact;
+    }
+
+    function update(contactUpdate){
+        contacts = contacts.map(function(contact){
+            if(contact._id == contactUpdate._id){
+                contact = contactUpdate;
+            }
+            return contact;
+        })
+        return contactUpdate;
+    }
 
 
     controller.get = function(req, res){
         
         var id = req.params.id;
 
-        var contato = contatos.filter(function(contato){
-            return contato._id == id;
+        var contact = contacts.filter(function(contact){
+            return contact._id == id;
         })[0];
         
-        contato ?
-            res.json(contato) 
+        contact ?
+            res.json(contact) 
             :
-            res.status(404).send('Contato nao encontrado');
+            res.status(404).send('contact nao encontrado');
 
-        // retorna a pagina contatos.ejs
+        // retorna a pagina contacts.ejs
          //res.render('index', {
          //    name: 'Express'
          //})
@@ -44,8 +71,8 @@ module.exports = function(){
         
         var id = req.params.id;
 
-        contatos = contatos.filter(function(contato) {
-            return contato._id != id;
+        contacts = contacts.filter(function(contact) {
+            return contact._id != id;
         });
 
         res.status(204).end();

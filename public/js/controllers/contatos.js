@@ -2,7 +2,7 @@
 
 
 angular.module('contatooh').controller('contatos',
-function($scope, $resource){
+function(Contato, $scope){
 
     $scope.contatos = [];
 
@@ -16,7 +16,7 @@ function($scope, $resource){
         $scope.total++;
     }
 
-    var Contato = $resource('/contatos/:id');
+    //var Contato = $resource('/contatos/:id');
     
 
     function buscaContatos(){
